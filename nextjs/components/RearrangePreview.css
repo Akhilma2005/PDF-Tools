@@ -1,0 +1,152 @@
+.rearrange-container {
+  animation: fadeIn 0.35s ease;
+}
+
+/* ── Toolbar ─────────────────────────────────────────────── */
+.rearrange-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 2px 14px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: background 0.18s;
+}
+.btn-text:hover { background: rgba(90,96,255,0.08); }
+
+.selected-count {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* ── Grid ────────────────────────────────────────────────── */
+.thumbnails-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+/* ── Card ────────────────────────────────────────────────── */
+.thumbnail-card {
+  position: relative;
+  border-radius: 10px;
+  border: 2px solid var(--border);
+  background: var(--white);
+  cursor: grab;
+  user-select: none;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.15s;
+  overflow: hidden;
+}
+.thumbnail-card:hover {
+  border-color: #a5b4fc;
+  box-shadow: 0 4px 12px rgba(90,96,255,0.1);
+}
+.thumbnail-card.is-selected {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(90,96,255,0.15);
+}
+.thumbnail-card.is-dragging {
+  opacity: 0.35;
+  transform: scale(1.04);
+  cursor: grabbing;
+}
+.thumbnail-card.is-over {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(90,96,255,0.25);
+}
+
+/* ── Checkbox ────────────────────────────────────────────── */
+.page-checkbox {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  z-index: 10;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 2px solid #cbd5e1;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.page-checkbox.checked {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+/* ── Image ───────────────────────────────────────────────── */
+.thumbnail-img-wrap {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #f1f5f9;
+}
+.thumbnail-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+.thumbnail-card:hover .thumbnail-img-wrap img { transform: scale(1.04); }
+
+/* ── Page label ──────────────────────────────────────────── */
+.page-label {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 5px 4px;
+  background: var(--white);
+}
+
+/* ── Sticky action bar ───────────────────────────────────── */
+.rearrange-actions {
+  position: sticky;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+  z-index: 50;
+}
+.rearrange-actions .btn { min-width: 260px; }
+.rearrange-actions .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.page-count-badge {
+  background: rgba(255,255,255,0.25);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .thumbnails-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+  }
+}

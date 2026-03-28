@@ -1,0 +1,6 @@
+[dotenv@17.3.1] injecting env (5) from .env -- tip: 🛡️ auth for agents: https://vestauth.com
+
+🚀 PDFTools Backend running on http://localhost:5000
+📁 Uploads  → c:\Users\maakh\Desktop\pdf main tool\backend\uploads
+📤 Outputs  → c:\Users\maakh\Desktop\pdf main tool\backend\outputs
+

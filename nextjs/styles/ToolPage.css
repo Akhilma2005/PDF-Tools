@@ -1,0 +1,117 @@
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+.back-btn:hover {
+  background: var(--light);
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateX(-2px);
+}
+
+.tool-hero {
+  background: linear-gradient(135deg, rgba(90,96,255,0.05), rgba(74,193,255,0.05));
+  border-bottom: 1px solid var(--border);
+  padding: 64px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tool-blob-1 {
+  width: 360px; height: 360px;
+  background: rgba(90,96,255,0.06);
+  top: -100px; right: -80px;
+  animation: blob 10s ease-in-out infinite;
+}
+
+.tool-hero-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.tool-hero-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(90,96,255,0.2);
+  transition: transform 0.3s ease;
+}
+
+.tool-hero-inner h1 { margin: 8px 0 12px; font-size: clamp(1.6rem, 4vw, 2.4rem); }
+.tool-hero-desc { font-size: 1.05rem; max-width: 560px; }
+
+/* Steps */
+.how-section { background: var(--white); }
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.step-card {
+  text-align: center;
+  padding: 40px 24px 32px;
+  background: var(--white);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  position: relative;
+  transition: transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s ease;
+}
+.step-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.step-icon { font-size: 2.2rem; margin-bottom: 14px; display: block; transition: transform 0.3s ease; }
+.step-card:hover .step-icon { transform: scale(1.2) rotate(-5deg); }
+.step-number {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  background: var(--gradient);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.step-icon { font-size: 2rem; margin-bottom: 12px; }
+.step-card h3 { margin-bottom: 8px; }
+
+/* Coming Soon */
+.coming-soon-box {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 60px 32px;
+  background: var(--white);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: fadeInUp 0.5s cubic-bezier(.16,1,.3,1) both;
+}
+.coming-soon-icon { font-size: 3.5rem; margin-bottom: 16px; }
+.coming-soon-box h2 { margin-bottom: 12px; font-size: 1.8rem; }
+.coming-soon-box p { color: var(--muted); font-size: 1.05rem; }
+
+@media (max-width: 768px) {
+  .tool-hero-inner { flex-direction: column; }
+  .steps { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://mypdfcastle.vercel.app/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/image-to-pdf</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/merge-pdf</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/compress-pdf</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/split-pdf</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/pdf-unlock</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/pdf-protect</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/pdf-editor</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/pdf-to-text</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/word-to-pdf</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/pdf-to-word</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/excel-to-pdf</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/ppt-to-pdf</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/pdf-to-ppt</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/html-to-text</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/about</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/contact</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/privacy</loc><priority>0.5</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://mypdfcastle.vercel.app/terms</loc><priority>0.5</priority><changefreq>yearly</changefreq></url>
+</urlset>

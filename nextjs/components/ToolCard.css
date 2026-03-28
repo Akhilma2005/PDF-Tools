@@ -1,0 +1,85 @@
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: transform 0.35s cubic-bezier(.16,1,.3,1), box-shadow 0.35s ease, border-color 0.25s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  will-change: transform;
+  backface-visibility: hidden;
+  height: 100%;
+}
+.tool-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(90,96,255,0.05), rgba(74,193,255,0.05));
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  border-radius: var(--radius);
+  pointer-events: none;
+}
+.tool-card:hover { transform: translateY(-10px) scale(1.015); box-shadow: 0 24px 48px rgba(90,96,255,0.16); border-color: rgba(90,96,255,0.28); }
+.tool-card:hover::after { opacity: 1; }
+.tool-card:active { transform: translateY(-4px) scale(1.005); }
+.tool-card-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  transition: transform 0.4s cubic-bezier(.34,1.56,.64,1);
+  will-change: transform;
+}
+.tool-card:hover .tool-card-icon { transform: scale(1.2) rotate(-8deg); }
+
+.tool-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+.tool-card:hover .tool-card-title { color: var(--primary); }
+
+.tool-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tool-card-soon {
+  font-size: 10px;
+  font-weight: 700;
+  background: rgba(245,158,11,0.15);
+  color: #d97706;
+  padding: 2px 8px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.tool-card-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+  flex: 1;
+}
+
+.tool-card-cta {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 4px;
+  transition: gap 0.2s ease, letter-spacing 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.tool-card:hover .tool-card-cta { letter-spacing: 0.04em; gap: 8px; }

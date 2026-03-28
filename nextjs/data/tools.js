@@ -1,0 +1,16 @@
+export const tools = [
+  { icon: '🖼️', title: 'Image to PDF',       description: 'Convert images to PDF instantly.',                path: '/tools/image-to-pdf',  color: 'rgba(90,96,255,0.1)',   accept: 'image/*', action: 'Convert to PDF' },
+  { icon: '🔗', title: 'Merge PDF',           description: 'Combine multiple PDFs into one.',                path: '/tools/merge-pdf',     color: 'rgba(74,193,255,0.1)',  accept: '.pdf,image/*',          action: 'Merge PDFs',    multiple: true },
+  { icon: '🗜️', title: 'Compress PDF',       description: 'Reduce PDF file size.',                          path: '/tools/compress-pdf',  color: 'rgba(16,185,129,0.1)',  accept: '.pdf',                  action: 'Compress PDF' },
+  { icon: '✂️', title: 'Split PDF',           description: 'Split PDF into separate pages.',                 path: '/tools/split-pdf',     color: 'rgba(245,158,11,0.1)',  accept: '.pdf',                  action: 'Split PDF',     showSplitOptions: true },
+  { icon: '📝', title: 'Word to PDF',         description: 'Convert DOCX Word documents to PDF.',            path: '/tools/word-to-pdf',   color: 'rgba(59,130,246,0.1)',  accept: '.doc,.docx',            action: 'Convert to PDF' },
+  { icon: '📄', title: 'PDF to DOCX',         description: 'Convert PDF files to editable DOCX.',            path: '/tools/pdf-to-word',   color: 'rgba(139,92,246,0.1)',  accept: '.pdf',                  action: 'Convert to DOCX' },
+  { icon: '📊', title: 'Excel to PDF',        description: 'Convert Excel spreadsheets to PDF.',             path: '/tools/excel-to-pdf',  color: 'rgba(16,185,129,0.12)', accept: '.xls,.xlsx',            action: 'Convert to PDF' },
+  { icon: '📑', title: 'PowerPoint to PDF',   description: 'Convert PPT/PPTX presentations to PDF.',         path: '/tools/ppt-to-pdf',    color: 'rgba(239,68,68,0.1)',   accept: '.ppt,.pptx',            action: 'Convert to PDF' },
+  { icon: '🔓', title: 'PDF Unlock',          description: 'Remove password protection from PDF.',           path: '/tools/pdf-unlock',    color: 'rgba(245,158,11,0.12)', accept: '.pdf',                  action: 'Unlock PDF',    requiresPassword: true },
+  { icon: '🔒', title: 'PDF Protect',         description: 'Add password protection to your PDF.',           path: '/tools/pdf-protect',   color: 'rgba(99,102,241,0.12)', accept: '.pdf',                  action: 'Protect PDF',   requiresNewPassword: true },
+  { icon: '📋', title: 'PDF to Text',         description: 'Extract all text content from PDF.',             path: '/tools/pdf-to-text',   color: 'rgba(236,72,153,0.1)',  accept: '.pdf',                  action: 'Extract Text' },
+  { icon: '📊', title: 'PDF to PowerPoint',   description: 'Convert PDF to editable PowerPoint.',            path: '/tools/pdf-to-ppt',    color: 'rgba(239,68,68,0.1)',   accept: '.pdf',                  action: 'Convert to PPTX' },
+  { icon: '🌐', title: 'HTML to PDF',         description: 'Convert HTML source code to a formatted PDF.',   path: '/tools/html-to-pdf',   color: 'rgba(59,130,246,0.1)',  accept: '.html,.htm',            action: 'Convert to PDF' },
+  { icon: '✏️', title: 'PDF Editor',          description: 'Annotate and edit PDF files in your browser.',   path: '/tools/pdf-editor',    color: 'rgba(90,96,255,0.1)',   accept: '.pdf',                  action: 'Edit PDF' },
+];
