@@ -5,6 +5,7 @@ const fs = require('fs');
 const { spawnSync } = require('child_process');
 const { error } = require('../utils/response');
 
+const compressImage = require('../controllers/compressImage');
 const imageToPdf   = require('../controllers/imageToPdf');
 const mergePdf     = require('../controllers/mergePdf');
 const compressPdf  = require('../controllers/compressPdf');
@@ -22,6 +23,7 @@ const htmlToText   = require('../controllers/htmlToText');
 const htmlToPdf    = require('../controllers/htmlToPdf');
 const pdfProtect   = require('../controllers/pdfProtect');
 
+router.post('/compress-image', upload.single('file'),      compressImage);
 router.post('/image-to-pdf',   upload.single('file'),      imageToPdf);
 router.post('/merge-pdf',      upload.array('files', 100), mergePdf);
 router.post('/compress-pdf',   upload.single('file'),      compressPdf);

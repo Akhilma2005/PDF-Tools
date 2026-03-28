@@ -3,7 +3,7 @@ import { tools } from '../../data/tools';
 
 export default function ToolRoute({ tool }) {
   if (!tool) return null;
-  return <ToolPage tool={tool} showCompressionOptions={tool.path === '/tools/compress-pdf'} />;
+  return <ToolPage tool={tool} showCompressionOptions={tool.path === '/tools/compress-pdf' || tool.path === '/tools/compress-image'} />;
 }
 
 export async function getStaticPaths() {

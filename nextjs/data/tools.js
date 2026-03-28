@@ -1,4 +1,5 @@
 export const tools = [
+  { icon: '🗜️', title: 'Compress Image',     description: 'Reduce image file size without losing quality.',   path: '/tools/compress-image', color: 'rgba(16,185,129,0.1)',  accept: 'image/*', action: 'Compress Image', showCompressionOptions: true },
   { icon: '🖼️', title: 'Image to PDF',       description: 'Convert images to PDF instantly.',                path: '/tools/image-to-pdf',  color: 'rgba(90,96,255,0.1)',   accept: 'image/*', action: 'Convert to PDF' },
   { icon: '🔗', title: 'Merge PDF',           description: 'Combine multiple PDFs into one.',                path: '/tools/merge-pdf',     color: 'rgba(74,193,255,0.1)',  accept: '.pdf,image/*',          action: 'Merge PDFs',    multiple: true },
   { icon: '🗜️', title: 'Compress PDF',       description: 'Reduce PDF file size.',                          path: '/tools/compress-pdf',  color: 'rgba(16,185,129,0.1)',  accept: '.pdf',                  action: 'Compress PDF' },

@@ -12,6 +12,7 @@ const storage = multer.diskStorage({
 
 const allowedTypes = {
   'image-to-pdf':  /image|jpeg|jpg|png|webp|gif|pdf|msword|wordprocessingml|doc|docx|excel|spreadsheetml|xls|xlsx|powerpoint|presentationml|ppt|pptx|tiff|bmp|jfif/,
+  'compress-image': /image|jpeg|jpg|png|webp|gif|tiff|bmp|jfif/,
   'merge-pdf':     /image|jpeg|jpg|png|webp|gif|pdf|msword|wordprocessingml|doc|docx|excel|spreadsheetml|xls|xlsx|powerpoint|presentationml|ppt|pptx|tiff|bmp|jfif/,
 
 
