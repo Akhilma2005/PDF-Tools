@@ -1,7 +1,7 @@
 export const tools = [
   { icon: '🖼️', title: 'Image to PDF',       description: 'Convert images to PDF instantly.',                path: '/tools/image-to-pdf',  color: 'rgba(90,96,255,0.1)',   accept: 'image/*', action: 'Convert to PDF' },
   { icon: '🔗', title: 'Merge PDF',           description: 'Combine multiple PDFs into one.',                path: '/tools/merge-pdf',     color: 'rgba(74,193,255,0.1)',  accept: '.pdf,image/*',          action: 'Merge PDFs',    multiple: true },
-  { icon: '🗜️', title: 'Compress PDF',       description: 'Reduce PDF file size.',                          path: '/tools/compress-pdf',  color: 'rgba(16,185,129,0.1)',  accept: '.pdf',                  action: 'Compress PDF' },
+  { icon: '🗜️', title: 'Compress PDF',       description: 'Reduce PDF or image file size.',                 path: '/tools/compress-pdf',  color: 'rgba(16,185,129,0.1)',  accept: '.pdf,image/*',          action: 'Compress' },
   { icon: '✂️', title: 'Split PDF',           description: 'Split PDF into separate pages.',                 path: '/tools/split-pdf',     color: 'rgba(245,158,11,0.1)',  accept: '.pdf',                  action: 'Split PDF',     showSplitOptions: true },
   { icon: '📝', title: 'Word to PDF',         description: 'Convert DOCX Word documents to PDF.',            path: '/tools/word-to-pdf',   color: 'rgba(59,130,246,0.1)',  accept: '.doc,.docx',            action: 'Convert to PDF' },
   { icon: '📄', title: 'PDF to DOCX',         description: 'Convert PDF files to editable DOCX.',            path: '/tools/pdf-to-word',   color: 'rgba(139,92,246,0.1)',  accept: '.pdf',                  action: 'Convert to DOCX' },
