@@ -2,7 +2,7 @@
 import { useState, useRef } from 'react';
 import RearrangePreview from './RearrangePreview';
 
-const API = process.env.NEXT_PUBLIC_API_URL || 'https://pdf-tools-2z5n.onrender.com/api';
+const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
 // Strip /tools prefix: /tools/compress-pdf → /compress-pdf
 function toApiPath(p) {
