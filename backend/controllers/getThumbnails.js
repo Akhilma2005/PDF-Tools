@@ -27,13 +27,14 @@ module.exports = async (req, res) => {
     const pdfDoc  = await pdfjsLib.getDocument({ data, disableFontFace: true }).promise;
     const total   = Math.min(pdfDoc.numPages, MAX_PAGES);
 
-    const thumbnails = [];
-    for (let i = 1; i <= total; i++) {
-      const jpegBuf = await renderPageToJpeg(pdfDoc, i);
-      const outName = `${uuidv4()}.jpg`;
-      fs.writeFileSync(outputPath(outName), jpegBuf);
-      thumbnails.push({ index: i - 1, url: previewUrl(req, outName), filename: outName });
-    }
+    const thumbnails = await Promise.all(
+      Array.from({ length: total }, async (_, idx) => {
+        const jpegBuf = await renderPageToJpeg(pdfDoc, idx + 1);
+        const outName = `${uuidv4()}.jpg`;
+        fs.writeFileSync(outputPath(outName), jpegBuf);
+        return { index: idx, url: previewUrl(req, outName), filename: outName };
+      })
+    );
 
     if (!thumbnails.length) throw new Error('No thumbnails generated.');
 

@@ -40,6 +40,29 @@ const findSoffice = () => {
 
 const isSofficeAvailable = () => !!findSoffice();
 
+// ── Shared fast flags for every soffice invocation ──────────────────────────
+const FAST_FLAGS = ['--headless', '--norestore', '--nofirststartwizard', '--nologo'];
+
+// ── Create an isolated user-profile dir to avoid lock contention ─────────────
+const makeTmpProfile = () => {
+  const dir = path.join(os.tmpdir(), `lo_${uuidv4()}`);
+  fs.mkdirSync(dir, { recursive: true });
+  return dir;
+};
+
+// ── runLibreOffice — spawn soffice with isolated profile ─────────────────────
+const runLibreOffice = (args, timeoutMs = 60000) => {
+  const bin = findSoffice();
+  if (!bin) throw new Error('LibreOffice is not installed.');
+  const profile = makeTmpProfile();
+  return new Promise((resolve, reject) => {
+    const proc = spawn(bin, [...FAST_FLAGS, `-env:UserInstallation=file:///${profile.replace(/\\/g, '/')}`, ...args], { stdio: 'ignore' });
+    const timer = setTimeout(() => { proc.kill(); reject(new Error('LibreOffice timed out.')); }, timeoutMs);
+    proc.on('close', () => { clearTimeout(timer); fs.rm(profile, { recursive: true, force: true }, () => {}); resolve(); });
+    proc.on('error', (err) => { clearTimeout(timer); fs.rm(profile, { recursive: true, force: true }, () => {}); reject(new Error(`LibreOffice not found. (${err.message})`)); });
+  });
+};
+
 // ── Core convert using libreoffice-convert npm package ───────────────────────
 const convertToPdf = async (inputPath, outputDir, format = 'pdf') => {
   const baseName = path.basename(inputPath, path.extname(inputPath));
@@ -47,7 +70,6 @@ const convertToPdf = async (inputPath, outputDir, format = 'pdf') => {
   if (fs.existsSync(outPath)) fs.unlinkSync(outPath);
 
   if (format === 'pdf') {
-    // Use libreoffice-convert npm package for PDF output
     try {
       const inputBuf  = fs.readFileSync(inputPath);
       const outputBuf = await libre.convertAsync(inputBuf, '.pdf', undefined);
@@ -56,7 +78,6 @@ const convertToPdf = async (inputPath, outputDir, format = 'pdf') => {
       throw new Error(`LibreOffice conversion failed: ${err.message}`);
     }
   } else {
-    // Use soffice directly for jpg/png etc
     await runLibreOffice(['--convert-to', format, '--outdir', outputDir, inputPath]);
   }
 
@@ -68,7 +89,6 @@ const convertToPdf = async (inputPath, outputDir, format = 'pdf') => {
 
 const convertBulk = async (inputPaths, outputDir, format = 'jpg') => {
   if (!inputPaths?.length) return [];
-  // Use runLibreOffice directly for non-pdf formats (jpg, png etc)
   await runLibreOffice(['--convert-to', format, '--outdir', outputDir, ...inputPaths]);
   const results = inputPaths.map(p => {
     const outPath = path.join(outputDir, `${path.basename(p, path.extname(p))}.${format}`);
@@ -78,19 +98,7 @@ const convertBulk = async (inputPaths, outputDir, format = 'jpg') => {
   throw new Error('Bulk conversion failed — no output files produced.');
 };
 
-// ── Pool (no-op on Linux — libreoffice-convert manages its own process) ──────
+// ── Pool (no-op — profile isolation handles concurrency) ─────────────────────
 const warmPool = () => Promise.resolve();
-
-// ── runLibreOffice — spawn soffice directly with raw args ────────────────────
-const runLibreOffice = (args, timeoutMs = 120000) => {
-  const bin = findSoffice();
-  if (!bin) throw new Error('LibreOffice is not installed.');
-  return new Promise((resolve, reject) => {
-    const proc = spawn(bin, ['--headless', ...args], { stdio: 'ignore' });
-    const timer = setTimeout(() => { proc.kill(); reject(new Error('LibreOffice timed out.')); }, timeoutMs);
-    proc.on('close', () => { clearTimeout(timer); resolve(); });
-    proc.on('error', (err) => { clearTimeout(timer); reject(new Error(`LibreOffice not found. (${err.message})`)); });
-  });
-};
 
 module.exports = { convertToPdf, convertBulk, findSoffice, isSofficeAvailable, runLibreOffice, warmPool };
