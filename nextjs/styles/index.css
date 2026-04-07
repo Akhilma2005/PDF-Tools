@@ -237,16 +237,20 @@ p { color: var(--muted); }
 .float      { animation: float 3.5s ease-in-out infinite; }
 .float-slow { animation: floatSlow 6s ease-in-out infinite; }
 .spin-slow  { animation: spin-slow 12s linear infinite; }
-.pulse-btn  { animation: pulse-ring 2s ease-out infinite; }
+.pulse-btn  { animation: none; }
 
 /* ── Animated gradient text ── */
 .text-gradient-anim {
-  background: linear-gradient(270deg, #5A60FF, #4AC1FF, #a78bfa, #5A60FF);
-  background-size: 300% 300%;
+  background: var(--gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: gradientShift 4s ease infinite;
+}
+
+/* Disable heavy animations on mobile */
+@media (max-width: 768px) {
+  .float, .float-slow, .blob { animation: none; }
+  .hero-floaters { display: none; }
 }
 
 /* ── Shimmer skeleton ── */

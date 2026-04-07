@@ -215,4 +215,5 @@
   .upload-cta-actions .btn { justify-content: center; }
   .hero-stats { gap: 16px; padding: 16px 20px; flex-wrap: wrap; border-radius: 20px; }
   .hero-actions { flex-direction: column; align-items: center; }
+  .upload-cta-card { animation: none; }
 }
