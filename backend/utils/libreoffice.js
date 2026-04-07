@@ -116,18 +116,24 @@ const runIsolated = (bin, args, timeoutMs) => {
   });
 };
 
-// ── convertToPdf — uses runLibreOffice directly (no libreoffice-convert pkg) ──
+// ── convertToPdf — uses runLibreOffice directly ──
 const convertToPdf = async (inputPath, outputDir, format = 'pdf') => {
   const baseName = path.basename(inputPath, path.extname(inputPath));
-  const outPath  = path.join(outputDir, `${baseName}.${format}`);
-  if (fs.existsSync(outPath)) fs.unlinkSync(outPath);
+  const tmpDir   = path.join(os.tmpdir(), `lo_out_${uuidv4()}`);
+  fs.mkdirSync(tmpDir, { recursive: true });
 
-  const filterMap = { pdf: 'pdf', jpg: 'jpg', png: 'png' };
-  await runLibreOffice(['--convert-to', filterMap[format] || format, '--outdir', outputDir, inputPath]);
+  await runLibreOffice(['--convert-to', format, '--outdir', tmpDir, inputPath]);
 
-  if (!fs.existsSync(outPath) || fs.statSync(outPath).size < 100)
+  const tmpOut = path.join(tmpDir, `${baseName}.${format}`);
+  if (!fs.existsSync(tmpOut) || fs.statSync(tmpOut).size < 100) {
+    fs.rm(tmpDir, { recursive: true, force: true }, () => {});
     throw new Error('Conversion failed. Ensure LibreOffice is installed and the file is not corrupted.');
-  return outPath;
+  }
+
+  const finalOut = path.join(outputDir, `${baseName}.${format}`);
+  fs.renameSync(tmpOut, finalOut);
+  fs.rm(tmpDir, { recursive: true, force: true }, () => {});
+  return finalOut;
 };
 
 const convertBulk = async (inputPaths, outputDir, format = 'jpg') => {
