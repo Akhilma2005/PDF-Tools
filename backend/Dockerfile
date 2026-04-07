@@ -6,6 +6,11 @@ RUN apt-get update && apt-get install -y \
     libreoffice-impress \
     qpdf \
     poppler-utils \
+    libcairo2 \
+    libpango-1.0-0 \
+    libpangocairo-1.0-0 \
+    libgif7 \
+    libjpeg62-turbo \
     --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
