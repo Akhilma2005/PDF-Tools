@@ -110,6 +110,7 @@
 .fade-in, .fade-in-delay-1, .fade-in-delay-2, .fade-in-delay-3, .fade-in-delay-4 { min-height: 1px; }
 .hero-stats { min-height: 64px; }
 .hero-search { min-height: 52px; }
+h1 { min-height: 60px; }
 
 /* No results */
 .no-results {
