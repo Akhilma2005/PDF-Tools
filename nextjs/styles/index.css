@@ -243,12 +243,15 @@ p { color: var(--muted); }
   background-clip: text;
 }
 
-/* Disable will-change and heavy animations on mobile */
+/* Disable ALL animations on mobile for performance */
 @media (max-width: 768px) {
-  .float, .float-slow, .blob { animation: none; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .float, .float-slow, .blob { animation: none !important; }
   .hero-floaters { display: none; }
-  .reveal, .reveal-left, .reveal-right, .reveal-scale { opacity: 1; transform: none; transition: none; }
-  .fade-in, .fade-in-delay-1, .fade-in-delay-2, .fade-in-delay-3, .fade-in-delay-4 { animation: none; opacity: 1; transform: none; }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .fade-in, .fade-in-delay-1, .fade-in-delay-2, .fade-in-delay-3, .fade-in-delay-4 { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .text-gradient-anim { animation: none !important; }
+  .hero-blob-1, .hero-blob-2 { display: none; }
 }
 
 /* ── Shimmer skeleton ── */
