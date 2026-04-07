@@ -9,6 +9,7 @@ export default function Document() {
         <meta name="google-adsense-account" content="ca-pub-3374531258461974" />
         <script
           async
+          defer
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3374531258461974"
           crossOrigin="anonymous"
         />

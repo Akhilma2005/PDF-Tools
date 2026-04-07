@@ -123,8 +123,6 @@
 .upload-cta-section { background: var(--light); padding: 72px 0; }
 .upload-cta-card {
   background: linear-gradient(135deg, #5A60FF, #4AC1FF);
-  background-size: 200% 200%;
-  animation: gradientShift 5s ease infinite;
   border-radius: 28px;
   padding: 60px 52px;
   display: flex;
